@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+User.destroy_all
+Skill.destroy_all
+Project.destroy_all
+
+a = User.create(first_name: 'John', last_name: 'Smith', email: 'one@test.com', description: 'Test One')
+b = User.create(first_name: 'Jane', last_name: 'Smith', email: 'two@test.com', description: 'Test Two')
+
+a.skills.create(name: 'Ruby')
+b.skills.create(name: 'Python')
+
+c = Project.create(name: 'Test Project')
+d = Project.create(name: 'Test Project Two')
+
+UserProject.create(project: c, developer: b, requester: a)
+UserProject.create(project: d, developer: a, requester: b)
