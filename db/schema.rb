@@ -14,8 +14,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_10_231606) do
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -26,13 +28,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_10_231606) do
 
   create_table "user_projects", force: :cascade do |t|
     t.integer "project_id", null: false
-    t.integer "developer_id", null: false
-    t.integer "requester_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["developer_id"], name: "index_user_projects_on_developer_id"
     t.index ["project_id"], name: "index_user_projects_on_project_id"
-    t.index ["requester_id"], name: "index_user_projects_on_requester_id"
+    t.index ["user_id"], name: "index_user_projects_on_user_id"
   end
 
   create_table "user_skills", force: :cascade do |t|
@@ -53,9 +53,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_10_231606) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "projects", "users"
   add_foreign_key "user_projects", "projects"
-  add_foreign_key "user_projects", "users", column: "developer_id"
-  add_foreign_key "user_projects", "users", column: "requester_id"
+  add_foreign_key "user_projects", "users"
   add_foreign_key "user_skills", "skills"
   add_foreign_key "user_skills", "users"
 end

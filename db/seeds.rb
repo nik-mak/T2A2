@@ -16,8 +16,8 @@ b = User.create(first_name: 'Jane', last_name: 'Smith', email: 'two@test.com', d
 a.skills.create(name: 'Ruby')
 b.skills.create(name: 'Python')
 
-c = Project.create(name: 'Test Project')
-d = Project.create(name: 'Test Project Two')
+c = Project.create(name: 'Test Project', user: a)
+d = Project.create(name: 'Test Project Two', user: b)
 
-UserProject.create(project: c, developer: b, requester: a)
-UserProject.create(project: d, developer: a, requester: b)
+# UserProject.create(project: c, requester: a)
+# UserProject.create(project: d, developer: a, requester: b)
