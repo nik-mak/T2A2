@@ -6,51 +6,43 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-# User.destroy_all
-# Skill.destroy_all
-# Project.destroy_all
+User.destroy_all
+Skill.destroy_all
+Project.destroy_all
 
-a = User.create(first_name: 'Christopher', last_name: 'Eccleston', email: 'one@test.com', description: 'Test One')
-b = User.create(first_name: 'David', last_name: 'Tennant', email: 'two@test.com', description: 'Test Two')
-c = User.create(first_name: 'Matt', last_name: 'Smith', email: 'three@test.com', description: 'Test Three')
-d = User.create(first_name: 'Peter', last_name: 'Capaldi', email: 'four@test.com', description: 'Test Four')
-e = User.create(first_name: 'Jodie', last_name: 'Whittaker', email: 'five@test.com', description: 'Test Five')
+# Users
+a = User.create!(first_name: 'Christopher', last_name: 'Eccleston', email: 'one@test.com', description: 'Test One')
+b = User.create!(first_name: 'David', last_name: 'Tennant', email: 'two@test.com', description: 'Test Two')
+c = User.create!(first_name: 'Matt', last_name: 'Smith', email: 'three@test.com', description: 'Test Three')
+d = User.create!(first_name: 'Peter', last_name: 'Capaldi', email: 'four@test.com', description: 'Test Four')
+e = User.create!(first_name: 'Jodie', last_name: 'Whittaker', email: 'five@test.com', description: 'Test Five')
 
-a.skills.create(name: 'Ruby')
-a.skills.create(name: 'Rails')
-a.skills.create(name: 'HTML')
-a.skills.create(name: 'CSS')
-a.skills.create(name: 'Javascript')
+# Skills
+Skill.create!(name: 'Ruby')
+Skill.create!(name: 'Rails')
+Skill.create!(name: 'HTML')
+Skill.create!(name: 'CSS')
+Skill.create!(name: 'Javascript')
 
-b.skills.create(name: 'Ruby')
-b.skills.create(name: 'Rails')
-b.skills.create(name: 'HTML')
-b.skills.create(name: 'CSS')
-b.skills.create(name: 'Javascript')
+# UserSkills
+Skill.first.users<<a<<b<<c
+Skill.second.users<<b<<c<<d
+Skill.third.users<<c<<d<<e
+Skill.fourth.users<<d<<e<<a
+Skill.fifth.users<<b<<c<<e
 
-c.skills.create(name: 'Ruby')
-c.skills.create(name: 'Rails')
-c.skills.create(name: 'HTML')
-c.skills.create(name: 'CSS')
-c.skills.create(name: 'Javascript')
+# Projects
+Project.create!(name: 'Calculator', user: a)
+Project.create!(name: 'Marketplace App', user: d)
+Project.create!(name: 'Terminal App', user: b)
 
-d.skills.create(name: 'Ruby')
-d.skills.create(name: 'Rails')
-d.skills.create(name: 'HTML')
-d.skills.create(name: 'CSS')
-d.skills.create(name: 'Javascript')
-
-e.skills.create(name: 'Ruby')
-e.skills.create(name: 'Rails')
-e.skills.create(name: 'HTML')
-e.skills.create(name: 'CSS')
-e.skills.create(name: 'Javascript')
-
-Project.create(name: 'Calculator', user: a)
-Project.create(name: 'Marketplace App', user: d)
-Project.create(name: 'Terminal App', user: b)
-
+# UserProjects
 Project.first.users<<b<<c
 Project.second.users<<b<<e
 Project.third.users<<b<<a<<d<<e
+
+puts "Users: #{User.count}"
+puts "Skills: #{Skill.count}"
+puts "Projects: #{Project.count}"
+
 
