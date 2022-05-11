@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-User.destroy_all
-Skill.destroy_all
-Project.destroy_all
+# User.destroy_all
+# Skill.destroy_all
+# Project.destroy_all
 
 a = User.create(first_name: 'Christopher', last_name: 'Eccleston', email: 'one@test.com', description: 'Test One')
 b = User.create(first_name: 'David', last_name: 'Tennant', email: 'two@test.com', description: 'Test Two')
