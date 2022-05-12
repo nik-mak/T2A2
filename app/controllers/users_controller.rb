@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show]
+  # REMOVE BEFORE DEPLOYING
+  skip_before_action :verify_authenticity_token
+  before_action :find_user, only: [:show]
+
   def index
     @users = User.all
   end
@@ -7,24 +10,28 @@ class UsersController < ApplicationController
   def show
   end
 
-  def new
-  end
-
   def create
-  end
-
-  def edit
+    user = User.create(project_params)
+    redirect_to user
   end
 
   def update
+    @user.update(user_params)
+    redirect_to @user
   end
 
   def destroy
+    @user.destroy
+    redirect_to root
   end
 
   private
 
-  def set_user
+  def find_user
     @user = User.find(params[:id])
+  end
+
+  def user_params
+    return params.permit(:first_name, :last_name, :email, :description)
   end
 end

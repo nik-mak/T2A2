@@ -32,9 +32,9 @@ Skill.fourth.users<<d<<e<<a
 Skill.fifth.users<<b<<c<<e
 
 # Projects
-Project.create!(name: 'Calculator', user: a)
-Project.create!(name: 'Marketplace App', user: d)
-Project.create!(name: 'Terminal App', user: b)
+Project.create!(name: 'Calculator', description: 'Calculator app I made',user: a)
+Project.create!(name: 'Marketplace App', description: 'Marketplace app I made',user: d)
+Project.create!(name: 'Terminal App', description: 'Terminal app I made', user: b)
 
 # UserProjects
 Project.first.users<<b<<c

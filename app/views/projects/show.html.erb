@@ -1,0 +1,9 @@
+<h1> <%= @project.name %> </h1>
+<h3> Description: </h3>
+<p> <%= @project.description %> </p>
+<h3> Requested by: </h3>
+<p> <%= link_to @project.user.full_name, user_path(@project.user_id) %> </p>
+<h3> Developers:  </h3>
+<% @project.users.each do |dev|%>
+  <p> <%= link_to dev.full_name, user_path(dev.id) %> </p>
+<% end %>

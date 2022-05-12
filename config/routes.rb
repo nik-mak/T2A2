@@ -8,10 +8,16 @@ Rails.application.routes.draw do
 
   # Project Paths
   get 'projects', to: 'projects#index'
-  get 'projects/:id', to: 'projects#show'
+  get 'projects/:id', to: 'projects#show', as: 'project'
+  post 'projects', to: 'projects#create'
+  put 'projects/:id', to: 'projects#update'
+  delete 'projects/:id', to: 'projects#destroy'
 
   # User Paths
   get 'users', to: 'users#index'
-  get 'users/:id', to: 'users#show'
+  get 'users/:id', to: 'users#show', as: 'user'
+  post 'users', to: 'users#create'
+  put 'users/:id', to: 'users#update'
+  delete 'users/:id', to: 'users#destroy'
   
 end
