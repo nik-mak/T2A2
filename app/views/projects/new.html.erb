@@ -1,14 +1,15 @@
 <h1> New Project </h1>
-<%= form_with(model: @project) do |f| %>
+<%= form_with(model: @project, data: {turbo: false}) do |f| %>
   <fieldset class='mb-2'>
     <%= f.label :name %>
-    <%= f.text_field :title %>
+    <%= f.text_field :name %>
   </fieldset>
   <fieldset class='mb-2'>
     <%= f.label :description %>
     <%= f.text_field :description %>
   </fieldset>
-    <fieldset class='mb-2'>
+  <%# Need to remove this when user profiles have been created %>
+  <fieldset class='mb-2'>
     <%= f.label :user_id %>
     <%= f.text_field :user_id %>
   </fieldset>

@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    render plain: 'users#new'
+    @user = User.new
   end
 
   def create

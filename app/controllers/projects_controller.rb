@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    project = Project.create(project_params)
+    project = Project.create!(project_params)
     redirect_to project
   end
 
@@ -38,6 +38,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    return params.permit(:name, :description, :user_id)
+    return params.require(:project).permit(:name, :description, :user_id)
   end
 end
