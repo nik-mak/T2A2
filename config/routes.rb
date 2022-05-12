@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   # Project Paths
   get 'projects', to: 'projects#index'
+  get 'projects/new', to: 'projects#new'
   get 'projects/:id', to: 'projects#show', as: 'project'
   post 'projects', to: 'projects#create'
   put 'projects/:id', to: 'projects#update'

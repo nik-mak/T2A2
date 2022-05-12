@@ -1,0 +1,18 @@
+<h1> New Project </h1>
+<%= form_with(model: @project) do |f| %>
+  <fieldset class='mb-2'>
+    <%= f.label :name %>
+    <%= f.text_field :title %>
+  </fieldset>
+  <fieldset class='mb-2'>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </fieldset>
+    <fieldset class='mb-2'>
+    <%= f.label :user_id %>
+    <%= f.text_field :user_id %>
+  </fieldset>
+  <fieldset>
+    <%= f.submit %>
+  </fieldset>
+<% end %>

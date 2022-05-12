@@ -11,6 +11,10 @@ class ProjectsController < ApplicationController
   def show
   end
 
+  def new
+    @project = Project.new
+  end
+
   def create
     project = Project.create(project_params)
     redirect_to project
