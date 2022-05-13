@@ -1,4 +1,4 @@
-<h1> New Project </h1>
+<h1> Edit Project </h1>
 <%= form_with(model: @project, data: {turbo: false}) do |f| %>
   <fieldset class='mb-2'>
     <%= f.label :name %>
@@ -6,14 +6,19 @@
   </fieldset>
   <fieldset class='mb-2'>
     <%= f.label :description %>
-    <%= f.text_field :description %>
+    <%= f.text_area :description %>
   </fieldset>
   <%# Need to remove this when user profiles have been created %>
   <fieldset class='mb-2'>
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
+    <h3>Developers</h3>
+      <% @project.users.each do |dev| %>
+        <%= f.label dev.full_name %>
+        <%= f.check_box dev %>
+        <br/>
+        <br/>
+      <% end %>
   </fieldset>
   <fieldset>
-    <%= f.submit class: 'btn btn-secondary btn-sm' %>
+    <%= f.submit class: 'btn btn-warning'%>
   </fieldset>
 <% end %>

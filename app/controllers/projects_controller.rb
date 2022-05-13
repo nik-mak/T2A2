@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   # REMOVE BEFORE DEPLOYING
   skip_before_action :verify_authenticity_token
 
-  before_action :find_project, only: [:show, :update, :destroy]
+  before_action :find_project, only: [:show, :update, :destroy, :edit]
   
   def index
     @projects = Project.all
@@ -18,6 +18,9 @@ class ProjectsController < ApplicationController
   def create
     project = Project.create!(project_params)
     redirect_to project
+  end
+
+  def edit
   end
 
   def update
@@ -38,6 +41,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    return params.require(:project).permit(:name, :description, :user_id)
+    return params.require(:project).permit(:name, :description, :user_id, :users)
   end
 end

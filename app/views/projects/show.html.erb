@@ -7,3 +7,7 @@
 <% @project.users.each do |dev|%>
   <p> <%= link_to dev.full_name, user_path(dev.id) %> </p>
 <% end %>
+<div class='btn-toolbar'>
+  <%= link_to 'Edit Project', edit_project_path(@project), class: "btn btn-warning me-2" %>
+  <%= button_to 'Delete Project', @project, class: 'btn btn-danger',method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete #{@project.name} ?" } } %>
+</div>
