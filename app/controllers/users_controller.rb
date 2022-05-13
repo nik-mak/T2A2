@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(project_params)
+    user = User.create!(user_params)
     redirect_to user
   end
 
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to root
+    redirect_to root_path
   end
 
   private
@@ -40,6 +40,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    return params.permit(:first_name, :last_name, :email, :description)
+    return params.require(:user).permit(:first_name, :last_name, :email, :description)
   end
 end

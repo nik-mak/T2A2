@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
-
   root 'projects#index'
 
   # Project Paths
@@ -21,7 +16,15 @@ Rails.application.routes.draw do
   get 'users/:id', to: 'users#show', as: 'user'
   get 'users/:id/edit', to: 'users#edit', as: 'edit_user'
   post 'users', to: 'users#create'
-  put 'users/:id', to: 'users#update'
+  patch 'users/:id', to: 'users#update'
   delete 'users/:id', to: 'users#destroy'
-  
+
+  # Skill Paths
+  get 'skills', to: 'skills#index'
+  get 'skills/new', to: 'skills#new'
+  get 'skills/:id', to: 'skills#show', as: 'skill'
+  get 'skills/:id/edit', to: 'skills#edit', as: 'edit_skill'
+  post 'skills', to: 'skills#create'
+  patch 'skills/:id', to: 'skills#update'
+  delete 'skills/:id', to: 'skills#destroy'
 end

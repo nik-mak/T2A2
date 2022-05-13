@@ -8,12 +8,11 @@
     <%= f.label :description %>
     <%= f.text_area :description %>
   </fieldset>
-  <%# Need to remove this when user profiles have been created %>
-  <fieldset class='mb-2'>
+   <fieldset class='mb-2'>
     <h3>Developers</h3>
       <% @project.users.each do |dev| %>
         <%= f.label dev.full_name %>
-        <%= f.check_box dev %>
+        <%= f.check_box dev%>
         <br/>
         <br/>
       <% end %>

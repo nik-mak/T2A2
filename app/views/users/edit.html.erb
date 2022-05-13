@@ -1,0 +1,22 @@
+<h1> Edit Account </h1>
+<%= form_with(model: @user, data: {turbo: false}) do |f| %>
+  <fieldset class='mb-2'>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </fieldset>
+  <fieldset class='mb-2'>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </fieldset>
+  <fieldset class='mb-2'>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </fieldset>
+  <fieldset class='mb-2'>
+    <%= f.label :desctription, 'Bio' %>
+    <%= f.text_area :description %>
+  </fieldset>
+  <fieldset>
+    <%= f.submit class: 'btn btn-secondary btn-sm' %>
+  </fieldset>
+<% end %>
