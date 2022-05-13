@@ -8,15 +8,13 @@
     <%= f.label :description %>
     <%= f.text_area :description %>
   </fieldset>
-   <fieldset class='mb-2'>
-    <h3>Developers</h3>
-      <% @project.users.each do |dev| %>
-        <%= f.label dev.full_name %>
-        <%= f.check_box dev%>
-        <br/>
-        <br/>
-      <% end %>
-  </fieldset>
+  <h3>Developers</h3>
+  <%= f.fields_for :users do |user_forms| %>
+    <%= user_forms.label 'hey' %>
+    <%= user_forms.check_box :_destroy %>
+  <% end %>
+  <br/>
+  <br/>
   <fieldset>
     <%= f.submit class: 'btn btn-warning'%>
   </fieldset>
