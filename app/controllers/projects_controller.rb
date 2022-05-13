@@ -41,17 +41,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    puts
-    puts
-    puts
-    puts
-    puts
-    pp params
-    puts
-    puts
-    puts
-    puts
-    puts
     return params.require(:project).permit(:name, :description, :user_id, users_attributes: [:id, :full_name, :_destroy])
   end
 end
