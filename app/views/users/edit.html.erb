@@ -16,7 +16,13 @@
     <%= f.label :desctription, 'Bio' %>
     <%= f.text_area :description %>
   </fieldset>
-  <fieldset>
+  <fieldset class='mb-2'>
+    <% @user.skills.each do |skill| %>
+      <%= f.check_box :skills, { multiple: true }, skill.id, nil %>
+      <%= f.label skill.name %>
+    <% end %>
+  </fieldset>
+  <fieldset class='mb-2'>
     <%= f.submit class: 'btn btn-secondary btn-sm' %>
   </fieldset>
 <% end %>

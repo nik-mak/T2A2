@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   # REMOVE BEFORE DEPLOYING
   skip_before_action :verify_authenticity_token
 
-  before_action :find_user, only: [:show, :update, :destroy, :edit]
+  before_action :find_user, only: [:show, :update, :edit, :destroy]
 
   def index
     @users = User.all
@@ -24,6 +24,10 @@ class UsersController < ApplicationController
   end
 
   def update
+    us = UserSkill.find_by(user_id: @user.id)
+    params[:user][:skills].each do |skill_id|
+      us.destroy if (us.user_id = @user.id) && ( us.skill_id = skill_id)
+    end
     @user.update(user_params)
     redirect_to @user
   end
@@ -40,6 +44,13 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    return params.require(:user).permit(:first_name, :last_name, :email, :description)
+    puts
+    puts
+    puts
+    pp params
+    puts
+    puts
+    puts
+    return params.require(:user).permit(:first_name, :last_name, :email, :description, skills: [])
   end
 end
