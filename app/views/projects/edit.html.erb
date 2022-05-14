@@ -10,10 +10,9 @@
   </fieldset>
   <fieldset class='mb-2'>
     <h3>Developers</h3>
-    <%= f.fields_for :users do |user_forms| %>
-      <%= user_forms.label :full_name %>
-      <%= user_forms.check_box :_destroy %>
-      <br/>
+    <% @project.users.each do |user| %>
+      <%= f.check_box :user_ids, { multiple: true }, user.id, nil %>
+      <%= f.label user.full_name %>
     <% end %>
   </fieldset>
   <fieldset class='mb-2'>

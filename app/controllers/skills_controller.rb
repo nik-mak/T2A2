@@ -23,7 +23,6 @@ class SkillsController < ApplicationController
   end
 
   def update
-    
     @skill.update(skill_params)
     redirect_to @skill
   end

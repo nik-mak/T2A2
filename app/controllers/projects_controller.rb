@@ -24,6 +24,10 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    up = UserProject.find_by(project_id: @project.id)
+    params[:project][:user_ids].each do |user|
+      up.destroy if (up.project_id = @project.id) && ( up.user_id = user)
+    end
     @project.update(project_params)
     redirect_to @project
   end
@@ -41,6 +45,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    return params.require(:project).permit(:name, :description, :user_id, users_attributes: [:id, :full_name, :_destroy])
+    return params.require(:project).permit(:name, :description, :user_id, user_ids: [] )
   end
 end
