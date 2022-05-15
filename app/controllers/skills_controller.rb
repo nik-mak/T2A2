@@ -1,6 +1,6 @@
 class SkillsController < ApplicationController
   # REMOVE BEFORE DEPLOYING
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
 
   before_action :find_skill, only: [:show, :update, :edit, :destroy]
 
