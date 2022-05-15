@@ -25,8 +25,10 @@ class UsersController < ApplicationController
 
   def update
     us = UserSkill.find_by(user_id: @user.id)
-    params[:user][:skills].each do |skill_id|
-      us.destroy if (us.user_id = @user.id) && ( us.skill_id = skill_id)
+    if  params[:user][:skills] != nil
+      params[:user][:skills].each do |skill_id|
+        us.destroy if (us.user_id = @user.id) && ( us.skill_id = skill_id)
+      end
     end
     @user.update(user_params)
     redirect_to @user
