@@ -24,17 +24,20 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    puts
-    puts
-    puts
-    pp params[:project][:user_ids]
-    puts
-    puts
-    puts
-    up = UserProject.find_by(project_id: @project.id)
     if params[:project][:user_ids] != nil
-      params[:project][:user_ids].each do |user_id|
-        up.destroy if (up.project_id = @project.id) && ( up.user_id = user_id)
+      puts
+      puts
+      puts
+      pp params[:project][:user_ids]
+      puts
+      puts
+      puts
+      UserProject.all.each do |user_project|
+        params[:project][:user_ids].each do |user_id|
+          if (user_project.user_id == user_id) && (user_project.project_id == @project.id)
+            user_project.destroy
+          end
+        end
       end
     end
     @project.update(project_params)

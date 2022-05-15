@@ -24,10 +24,20 @@ class UsersController < ApplicationController
   end
 
   def update
-    us = UserSkill.find_by(user_id: @user.id)
-    if  params[:user][:skills] != nil
-      params[:user][:skills].each do |skill_id|
-        us.destroy if (us.user_id = @user.id) && ( us.skill_id = skill_id)
+    if params[:user][:skill_ids] != nil
+      puts
+      puts
+      puts
+      p params[:user][:skill_ids]
+      puts
+      puts
+      puts
+      UserSkill.all.each do |user_skill|
+        params[:user][:skill_ids].each do |skill_id|
+          if (user_skill.skill_id == skill_id) && (user_skill.user_id == @user.id)
+            user_skill.destroy 
+          end
+        end
       end
     end
     @user.update(user_params)
@@ -53,6 +63,6 @@ class UsersController < ApplicationController
     puts
     puts
     puts
-    return params.require(:user).permit(:first_name, :last_name, :email, :description, skills: [])
+    return params.require(:user).permit(:first_name, :last_name, :email, :description, skill_ids: [])
   end
 end

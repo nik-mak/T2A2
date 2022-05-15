@@ -17,9 +17,11 @@
     <%= f.text_area :description %>
   </fieldset>
   <fieldset class='mb-2'>
-    <% @user.skills.each do |skill| %>
-      <%= f.check_box :skills, { multiple: true }, skill.id, nil %>
+    <h3>Skills:</h3>
+    <% Skill.all.each do |skill| %>
+      <%= f.check_box :skill_ids, { multiple: true }, skill.id, nil %>
       <%= f.label skill.name %>
+      <br/>
     <% end %>
   </fieldset>
   <fieldset class='mb-2'>
