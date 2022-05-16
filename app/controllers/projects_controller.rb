@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   # REMOVE BEFORE DEPLOYING
   # skip_before_action :verify_authenticity_token
-
+  before_action :authenticate_user!
   before_action :find_project, only: [:show, :update, :edit, :destroy]
   
   def index
