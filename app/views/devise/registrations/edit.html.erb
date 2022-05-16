@@ -36,12 +36,14 @@
     <%= f.label :desctription, 'Bio' %>
     <%= f.text_area :description %>
   </fieldset>
-  <h3>Skills:</h3>
-  <% Skill.all.each do |skill| %>
-    <%= f.check_box :skill_ids, { multiple: true }, skill.id, nil %>
-    <%= f.label skill.name %>
-    <br/>
-  <% end %>
+  <fieldset>
+    <h3>Skills:</h3>
+    <% Skill.all.each do |skill| %>
+      <%= f.check_box :skill_ids, { multiple: true }, skill.id, nil %>
+      <%= f.label skill.name %>
+      <br/>
+    <% end %>
+  </fieldset>
   <div class="actions">
     <%= f.submit "Update" %>
   </div>

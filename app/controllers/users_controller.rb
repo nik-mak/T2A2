@@ -9,41 +9,41 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show
-  end
+  # def show
+  # end
 
-  def new
-    @user = User.new
-  end
+  # def new
+  #   @user = User.new
+  # end
 
-  def create
-    user = User.create!(user_params)
-    redirect_to user
-  end
+  # def create
+  #   user = User.create!(user_params)
+  #   redirect_to user
+  # end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def update
-    if params[:user].key?(:skill_ids)
-      UserSkill.all.each do |user_skill|
-        params[:user][:skill_ids].each do |skill_id|
-          if (user_skill.skill_id == skill_id) && (user_skill.user_id == @user.id)
-            user_skill.destroy 
-          end
-        end
-      end
-    else
-      UserSkill.where(user_id: @user.id).destroy_all
-    end
-    @user.update(user_params)
-    redirect_to @user
-  end
+  # def update
+  #   if params[:user].key?(:skill_ids)
+  #     UserSkill.all.each do |user_skill|
+  #       params[:user][:skill_ids].each do |skill_id|
+  #         if (user_skill.skill_id == skill_id) && (user_skill.user_id == @user.id)
+  #           user_skill.destroy 
+  #         end
+  #       end
+  #     end
+  #   else
+  #     UserSkill.where(user_id: @user.id).destroy_all
+  #   end
+  #   @user.update(user_params)
+  #   redirect_to @user
+  # end
 
-  def destroy
-    @user.destroy
-    redirect_to root_path
-  end
+  # def destroy
+  #   @user.destroy
+  #   redirect_to root_path
+  # end
 
   private
 
