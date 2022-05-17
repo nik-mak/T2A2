@@ -9,6 +9,10 @@
     <%= f.text_area :description %>
   </fieldset>
   <fieldset class='mb-2'>
+    <%= f.label 'Completed?' %>
+    <%= f.check_box :status %>
+  </fieldset>
+  <fieldset class='mb-2'>
     <h3>Developers</h3>
     <% @project.users.each do |user| %>
       <%= f.check_box :user_ids, { multiple: true }, user.id, nil %>

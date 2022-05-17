@@ -79,11 +79,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :description, :email, :password])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :description, :email, :password, :skill_ids])
+    devise_parameter_sanitizer
+      .permit(:sign_up, keys: [:first_name, :last_name, :description, :email, :password])
+    devise_parameter_sanitizer
+      .permit(:account_update, keys: [:first_name, :last_name, :description, :email, :password, :skill_ids])
   end
 
   def user_params
-    return params.require(:user).permit(:first_name, :last_name, :email, :description, skill_ids: [])
+    return params
+      .require(:user)
+      .permit(:first_name, :last_name, :email, :description, skill_ids: [])
   end
 end

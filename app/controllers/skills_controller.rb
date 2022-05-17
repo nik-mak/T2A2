@@ -1,8 +1,4 @@
 class SkillsController < ApplicationController
-  # REMOVE BEFORE DEPLOYING
-  # skip_before_action :verify_authenticity_token
-  
-  before_action :authenticate_user!
   before_action :find_skill, only: [:show, :update, :edit, :destroy]
 
   def index
@@ -41,7 +37,9 @@ class SkillsController < ApplicationController
   end
 
   def skill_params
-    return params.require(:skill).permit(:name)
+    return params
+      .require(:skill)
+      .permit(:name)
   end
 
 end

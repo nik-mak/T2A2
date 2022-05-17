@@ -12,8 +12,8 @@ class User < ApplicationRecord
   has_many :requester_projects, class_name: 'Project', foreign_key: 'user_id', dependent: :destroy
 
   # Validations
-  # validates :first_name, presence: true
-  # validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
   def full_name
     return "#{first_name} #{last_name}"

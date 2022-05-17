@@ -1,9 +1,11 @@
 <h1>
   <%= @user.full_name %>
 </h1>
-<div class='btn-toolbar'>
-  <%= link_to 'Edit Account', edit_user_registration_path, class: 'btn btn-outline-primary btn-sm' %>
-</div>
+<% if user_signed_in? && (@user.id == current_user.id)%>
+  <div class='btn-toolbar'>
+    <%= link_to 'Edit Account', edit_user_registration_path, class: 'btn btn-outline-primary btn-sm' %>
+  </div>
+<% end %>
 <h3> Bio: </h3>
 <p> <%= @user.description %> </p>
 <h3> Skills: </h3>
@@ -16,12 +18,14 @@
 <% end %>
 <h3>
   Uploaded Projects
-  <%= link_to 'Create New Project', projects_new_path, class: "btn btn-primary btn-sm" %>
+  <% if user_signed_in? && (@user.id == current_user.id)%>
+    <%= link_to 'Create New Project', projects_new_path, class: "btn btn-primary btn-sm" %>
+  <% end %>
 </h3>
 <% @user.requester_projects.each do |project| %>
   <p> <%= link_to project.name, project_path(project.id) %> </p>
 <% end %>
-<h3> Worked On Projects </h3>
+<h3>Worked On Projects </h3>
 <% @user.developer_projects.each do |project| %>
   <p> <%= link_to project.name, project_path(project.id) %> </p>
 <% end %>
