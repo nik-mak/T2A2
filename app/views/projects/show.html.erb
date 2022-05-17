@@ -1,4 +1,11 @@
 <h1> <%= @project.name %> </h1>
+<% if user_signed_in? && @project.user.id != current_user.id %>
+  <% if (@project.joined?(current_user, @project)) %>
+    <%= button_to 'Leave Project', leave_project_path, method: 'patch', class: 'btn btn-outline-warning me-2' %>
+  <% else %>
+    <%= button_to 'Join Project', join_project_path, method: 'patch', class: 'btn btn-outline-success me-2' %>
+  <% end %>
+<% end %>
 <h3> Description: </h3>
 <p> <%= @project.description %> </p>
 <h3> Status: </h3>

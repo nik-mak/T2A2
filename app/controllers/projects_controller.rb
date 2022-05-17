@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :find_project, only: [:show, :update, :edit, :destroy]
+  before_action :find_project, only: [:show, :update, :edit, :join, :leave, :destroy]
   
   def index
     @projects = Project.all
@@ -18,6 +18,16 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+  end
+
+  def join
+    UserProject.create(user_id: current_user.id, project_id: @project.id)
+    redirect_to @project
+  end
+
+  def leave
+    UserProject.where(user_id: current_user.id, project_id: @project.id).destroy_all
+    redirect_to @project
   end
 
   def update

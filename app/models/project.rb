@@ -6,4 +6,8 @@ class Project < ApplicationRecord
   # Validations
   validates :name, presence: true
   validates :description, presence: true
+
+  def joined?(user, project)
+    UserProject.find_by(user_id: user.id, project_id: project.id).present?
+  end
 end
