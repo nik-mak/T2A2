@@ -2,10 +2,11 @@
   <%= @user.full_name %>
 </h1>
 <% if user_signed_in? && (@user.id == current_user.id)%>
-  <div class='btn-toolbar'>
+  <div class='btn-toolbar mb-2'>
     <%= link_to 'Edit Account', edit_user_registration_path, class: 'btn btn-outline-primary btn-sm' %>
   </div>
 <% end %>
+<%= cl_image_tag(@user.profile_img.key, crop: :scale, width: 200, cloud_name: 'dgmfa6oai') if @user.profile_img.attached? %>
 <h3> Bio: </h3>
 <p> <%= @user.description %> </p>
 <h3> Skills: </h3>

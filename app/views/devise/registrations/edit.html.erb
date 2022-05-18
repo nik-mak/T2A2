@@ -1,22 +1,22 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="field">
+  <div class="field mb-2">
     <%= f.label :first_name %>
     <%= f.text_field :first_name, autofocus: true %>
   </div>
-  <div class="field">
+  <div class="field mb-2">
     <%= f.label :last_name %>
     <%= f.text_field :last_name, autofocus: true %>
   </div>
-  <div class="field">
+  <div class="field mb-2">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
-  <div class="field">
+  <div class="field mb-2">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
@@ -24,26 +24,35 @@
       <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
   </div>
-  <div class="field">
+  <div class="field mb-2">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  <div class='field mb-2'>
+    <%= f.label :profile_img %>
+    <%= f.file_field :profile_img %>
   </div>
-  <fieldset class='mb-2'>
+  <% if @user.profile_img.attached? %>
+    <div class='field mb-2'>
+      <%= cl_image_tag @user.profile_img.key, :height=>100, :width=>150, :crop=>"limit", cloud_name: 'dgmfa6oai' %>
+    </div>
+  <% end %>
+  <div class='field mb-2'>
     <%= f.label :desctription, 'Bio' %>
     <%= f.text_area :description %>
-  </fieldset>
-  <fieldset>
+  </div>
+  <div class='field mb-2'>
     <h3>Skills:</h3>
     <% Skill.all.each do |skill| %>
       <%= f.check_box :skill_ids, { multiple: true }, skill.id, nil %>
       <%= f.label skill.name %>
       <br/>
     <% end %>
-  </fieldset>
+  </div>
+  <div class="field mb-2">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  </div>
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
