@@ -11,11 +11,14 @@ Skill.destroy_all
 Project.destroy_all
 
 # Users
-a = User.create!(first_name: 'Christopher', last_name: 'Eccleston', email: 'one@test.com', password: 'test123', description: 'Test One')
-b = User.create!(first_name: 'David', last_name: 'Tennant', email: 'two@test.com', password: 'test123', description: 'Test Two')
-c = User.create!(first_name: 'Matt', last_name: 'Smith', email: 'three@test.com', password: 'test123', description: 'Test Three')
-d = User.create!(first_name: 'Peter', last_name: 'Capaldi', email: 'four@test.com', password: 'test123', description: 'Test Four')
-e = User.create!(first_name: 'Jodie', last_name: 'Whittaker', email: 'five@test.com', password: 'test123', description: 'Test Five')
+a = User.create!(first_name: 'Russel', last_name: 'Sprout', email: 'one@test.com', password: 'test123', description: 'Test One', developer: true)
+b = User.create!(first_name: 'Fletch', last_name: 'Skinner', email: 'two@test.com', password: 'test123', description: 'Test Two', developer: true)
+c = User.create!(first_name: 'Burgundy', last_name: 'Flemming', email: 'three@test.com', password: 'test123', description: 'Test Three', developer: true)
+d = User.create!(first_name: 'Nelson', last_name: 'Fig', email: 'four@test.com', password: 'test123', description: 'Test Four', developer: true)
+e = User.create!(first_name: 'Ursula', last_name: 'Gurnmeister', email: 'five@test.com', password: 'test123', description: 'Test Five', developer: true)
+f = User.create!(first_name: 'Cecil', last_name: 'Smith', email: 'six@test.com', password: 'test123', description: 'Test Six', developer: false)
+g = User.create!(first_name: 'Miles', last_name: 'Tone', email: 'seven@test.com', password: 'test123', description: 'Test Seven', developer: false)
+h = User.create!(first_name: 'Linguina', last_name: 'Nettlewater', email: 'eight@test.com', password: 'test123', description: 'Test Eight', developer: false)
 
 # Skills
 # Skill.create!(name: 'C')
@@ -55,13 +58,15 @@ Skill.fourth.users<<d<<e<<a
 Skill.fifth.users<<b<<c<<e
 
 # Projects
-Project.create!(name: 'Calculator', description: 'Calculator app I made',user: a)
-Project.create!(name: 'Marketplace App', description: 'Marketplace app I made',user: d)
-Project.create!(name: 'Terminal App', description: 'Terminal app I made', user: b)
+Project.create!(name: 'Calculator', description: 'Simple calculator',user: a)
+Project.create!(name: 'Marketplace App', description: 'Two-sided marketplace app',user: b)
+Project.create!(name: 'Terminal App', description: 'Simple terminal application', user: c)
+Project.create!(name: 'URL Shortener', description: 'Shortens a URL', user: f)
+Project.create!(name: 'Tic-tac-toe', description: 'Tic-tac-toe game', user: h)
 
 # UserProjects
 Project.first.users<<b<<c
-Project.second.users<<b<<e
+Project.second.users<<b<<e<<a
 Project.third.users<<b<<a<<d<<e
 
 puts "Users: #{User.count}"

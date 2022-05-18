@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :find_project, only: [:show, :update, :create, :edit, :join, :leave, :destroy]
+  before_action :find_project, only: [:show, :update, :edit, :join, :leave, :destroy]
   
   def index
     @projects = Project.all

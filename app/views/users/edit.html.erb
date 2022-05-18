@@ -22,6 +22,10 @@
     <%= f.text_area :description %>
   </fieldset>
   <fieldset class='field mb-2'>
+    <%= f.label 'Are you a developer?' %>
+    <%= f.check_box :developer %>
+  </fieldset>
+  <fieldset class='field mb-2'>
     <h3>Skills:</h3>
     <% Skill.all.each do |skill| %>
       <%= f.check_box :skill_ids, { multiple: true }, skill.id, nil %>
@@ -29,7 +33,7 @@
       <br/>
     <% end %>
   </fieldset>
-   <fieldset class='mb-2'>
+  <fieldset class='mb-2'>
     <%= f.submit class: 'btn btn-warning'%>
   </fieldset>
 <% end %>
