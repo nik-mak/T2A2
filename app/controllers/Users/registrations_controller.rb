@@ -15,9 +15,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    if @user.invalid?
+      flash[:alert] = @user.errors.full_messages.join('</br>')
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -25,22 +28,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  def update
-    super
-    if params[:user].key?(:skill_ids)
-      UserSkill.all.each do |user_skill|
-        params[:user][:skill_ids].each do |skill_id|
-          if (user_skill.skill_id == skill_id) && (user_skill.user_id == @user.id)
-            user_skill.destroy 
-          end
-        end
-      end
-    else
-      UserSkill.where(user_id: @user.id).destroy_all
-    end
-    @user.update(user_params)
-    # redirect_to @user
-    end
+  # def update
+  #   super
+  # end
 
   # DELETE /resource
   # def destroy
@@ -85,9 +75,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       .permit(:account_update, keys: [:first_name, :last_name, :description, :email, :password, :skill_ids, :profile_img])
   end
 
-  def user_params
-    return params
-      .require(:user)
-      .permit(:first_name, :last_name, :email, :description, :profile_img, skill_ids: [])
-  end
+  # def user_params
+  #   return params
+  #     .require(:user)
+  #     .permit(:first_name, :last_name, :email, :description, :profile_img, skill_ids: [])
+  # end
 end

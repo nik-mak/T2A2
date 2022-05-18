@@ -1,0 +1,35 @@
+<h1> Edit Profile </h1>
+<%= form_with(model: @user, data: {turbo: false}) do |f| %>
+  <fieldset class='mb-2'>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </fieldset>
+  <fieldset class='mb-2'>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </fieldset>
+  <% if @user.profile_img.attached? %>
+    <fieldset class='field mb-2'>
+      <%= cl_image_tag @user.profile_img.key, :height=>100, :width=>150, :crop=>"limit", cloud_name: 'dgmfa6oai' %>
+    </fieldset>
+  <% end %>
+  <fieldset class='field mb-2'>
+    <%= f.label :profile_img %>
+    <%= f.file_field :profile_img %>
+  </fieldset>
+  <fieldset class='field mb-2'>
+    <%= f.label :desctription, 'Bio' %>
+    <%= f.text_area :description %>
+  </fieldset>
+  <fieldset class='field mb-2'>
+    <h3>Skills:</h3>
+    <% Skill.all.each do |skill| %>
+      <%= f.check_box :skill_ids, { multiple: true }, skill.id, nil %>
+      <%= f.label skill.name %>
+      <br/>
+    <% end %>
+  </fieldset>
+   <fieldset class='mb-2'>
+    <%= f.submit class: 'btn btn-warning'%>
+  </fieldset>
+<% end %>

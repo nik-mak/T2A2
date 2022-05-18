@@ -1,14 +1,6 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Edit Account Details</h2>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="field mb-2">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name, autofocus: true %>
-  </div>
-  <div class="field mb-2">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name, autofocus: true %>
-  </div>
   <div class="field mb-2">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -27,27 +19,6 @@
   <div class="field mb-2">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-  <div class='field mb-2'>
-    <%= f.label :profile_img %>
-    <%= f.file_field :profile_img %>
-  </div>
-  <% if @user.profile_img.attached? %>
-    <div class='field mb-2'>
-      <%= cl_image_tag @user.profile_img.key, :height=>100, :width=>150, :crop=>"limit", cloud_name: 'dgmfa6oai' %>
-    </div>
-  <% end %>
-  <div class='field mb-2'>
-    <%= f.label :desctription, 'Bio' %>
-    <%= f.text_area :description %>
-  </div>
-  <div class='field mb-2'>
-    <h3>Skills:</h3>
-    <% Skill.all.each do |skill| %>
-      <%= f.check_box :skill_ids, { multiple: true }, skill.id, nil %>
-      <%= f.label skill.name %>
-      <br/>
-    <% end %>
   </div>
   <div class="field mb-2">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
