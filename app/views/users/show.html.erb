@@ -8,14 +8,14 @@
   </div>
 <% end %>
 <%= cl_image_tag(@user.profile_img.key, crop: :scale, width: 200, cloud_name: 'dgmfa6oai') if @user.profile_img.attached? %>
+  <h4> <%= 'Developer' if @user.developer? %> </h4>
 <h3> Bio: </h3>
 <p> <%= @user.description %> </p>
-<% if @user.developer? %>
-  <h4>Developer </h4>
-<% end %>
-<h3> 
+<h3>
   Skills: 
-  <%= link_to 'New Skill', skills_new_path, class: "btn btn-primary btn-sm" %>
+  <% if user_signed_in? && (@user.id == current_user.id) %>
+    <%= link_to 'New Skill', skills_new_path, class: "btn btn-primary btn-sm" %>
+  <% end %>
 </h3>
 <% if @user.skills.any? %>
   <% @user.skills.each do |skill| %>
