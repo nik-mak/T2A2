@@ -13,7 +13,10 @@
 <% if @user.developer? %>
   <h4>Developer </h4>
 <% end %>
-<h3> Skills: </h3>
+<h3> 
+  Skills: 
+  <%= link_to 'New Skill', skills_new_path, class: "btn btn-primary btn-sm" %>
+</h3>
 <% if @user.skills.any? %>
   <% @user.skills.each do |skill| %>
     <p> <%= skill.name %> </p>

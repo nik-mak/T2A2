@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   # Skill Paths
   get 'skills', to: 'skills#index'
+  get 'skills/new', to: 'skills#new'
   get 'skills/:id', to: 'skills#show', as: 'skill'
-
+  post 'skills', to: 'skills#create'
 end

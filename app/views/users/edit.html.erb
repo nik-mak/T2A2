@@ -27,7 +27,7 @@
   </fieldset>
   <fieldset class='field mb-2'>
     <h3>Skills:</h3>
-    <% Skill.all.each do |skill| %>
+    <% Skill.order(:name).each do |skill| %>
       <%= f.check_box :skill_ids, { multiple: true }, skill.id, nil %>
       <%= f.label skill.name %>
       <br/>

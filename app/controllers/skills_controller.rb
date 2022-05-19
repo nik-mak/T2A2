@@ -1,5 +1,5 @@
 class SkillsController < ApplicationController
-  before_action :find_skill, only: [:show, :update, :edit, :destroy]
+  before_action :find_skill, only: [:show, :destroy]
 
   def index
     @skills = Skill.order(:name)
@@ -13,16 +13,13 @@ class SkillsController < ApplicationController
   end
 
   def create
-    skill = Skill.create!(skill_params)
-  end
-
-  def edit
-  end
-
-  def update
-    
-    @skill.update(skill_params)
-    redirect_to @skill
+    if Skill.find_by(name: params[:name]).present?
+      redirect_to current_user, alert: 'Skill has already been created'
+    else
+      skill = Skill.create!(skill_params)
+      current_user.skills.push(skill)
+      redirect_to current_user
+    end
   end
 
   def destroy
@@ -37,6 +34,13 @@ class SkillsController < ApplicationController
   end
 
   def skill_params
+    puts
+    puts
+    puts
+    puts params
+    puts
+    puts
+    puts
     return params
       .require(:skill)
       .permit(:name)

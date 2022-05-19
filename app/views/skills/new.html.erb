@@ -1,0 +1,10 @@
+<h1>New Skill</h1>
+<%= form_with(model: @skill, data: {turbo: false}) do |f| %>
+  <fieldset class='mb-2'>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </fieldset>
+   <fieldset class='mb-2'>
+    <%= f.submit class: 'btn btn-secondary btn-sm' %>
+  </fieldset>
+<% end %>
