@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
-  root 'projects#index'
+  root 'welcome#index'
+
+  # Homepage
+  get 'welcome', to: 'welcome#index'
 
   # Project Paths
   get 'projects', to: 'projects#index'

@@ -34,13 +34,6 @@ class SkillsController < ApplicationController
   end
 
   def skill_params
-    puts
-    puts
-    puts
-    puts params
-    puts
-    puts
-    puts
     return params
       .require(:skill)
       .permit(:name)
