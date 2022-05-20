@@ -66,7 +66,7 @@ https://trello.com/b/Bzz6qfvz/t2a2-marketplace-project
 
 ![Project Page](docs/Project%20Page.png)
 ## R14 - An ERD for your app
-![ERD](docs/erd.jpg)
+![ERD](docs/erd.png)
 
 ## R15 - Explain the different high-level components (abstractions) in your app
 Tables
@@ -116,6 +116,10 @@ All the profile images on the site are handled through the Active record tables 
 |Projects -> UserProjects|Zero to many|A Project does not require any UserProjects to exist (i.e. for a Project to exist there doesn't have to have a developer attached).|
 |User -> UserProjects|One and only one|Each record of User can only have one record for a given project (i.e. a User can only be associated with 'Project One' once).|
 |UserProjects -> User|One and only one|For each record in UserProjects, there can only be one User|
+|Roles -> UserRoles|Zero to many|A role may exist without it having to be associated with a user|
+|UserRoles -> Roles|One and only one|Each record in UserRoles must have only one Role associated with it|
+|User -> UserRoles|One and only one|Each record of User within UserRoles can only have one user attached (i.e. a User can only be associated with a Role once)|
+|UserRoles -> User|One and only one|For each record in UserRoles, there can only be one User|
 ## R19 - Provide your database schema design
 See R14
 
