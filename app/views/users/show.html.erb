@@ -1,31 +1,39 @@
 <h1>
   <%= @user.full_name %>
 </h1>
+
+<%# Will only display the toolbar if a user is signed in and the page belongs to the logged in user %>
 <% if user_signed_in? && (@user.id == current_user.id)%>
   <div class='btn-toolbar mb-2'>
     <%= link_to 'Edit Profile', edit_user_path, class: 'btn btn-outline-primary btn-sm me-2' %>
     <%= link_to 'Edit Acount Details', edit_user_registration_path, class: 'btn btn-outline-secondary btn-sm me-2' %>
   </div>
 <% end %>
-<%= cl_image_tag(@user.profile_img.key, crop: :scale, width: 200, cloud_name: 'dgmfa6oai') if @user.profile_img.attached? %>
-  <h4> <%= 'Developer' if @user.developer? %> </h4>
+<%= cl_image_tag(@user.profile_img.key, crop: :scale, width: 200, cloud_name: ENV['CLOUDINARY_CLOUD_NAME']) if @user.profile_img.attached? %>
+<h4> <%= 'Developer' if @user.developer? %> </h4>
 <h3> Bio: </h3>
 <p> <%= @user.description %> </p>
-<h3>
-  Skills: 
-  <% if user_signed_in? && (@user.id == current_user.id) %>
-    <%= link_to 'New Skill', skills_new_path, class: "btn btn-primary btn-sm" %>
+
+<%# Will only display skills if a user is a developer %>
+<% if @user.developer? %>
+  <h3>
+    Skills: 
+    <% if user_signed_in? && (@user.id == current_user.id) %>
+      <%= link_to 'New Skill', skills_new_path, class: "btn btn-primary btn-sm" %>
+    <% end %>
+  </h3>
+  <% if @user.skills.any?%>
+    <% @user.skills.each do |skill| %>
+      <p> <%= link_to skill.name, skill_path(skill.id) %> </p>
+    <% end %>
+  <% else %>
+    <p> Edit your account to add a skill </p>
   <% end %>
-</h3>
-<% if @user.skills.any? %>
-  <% @user.skills.each do |skill| %>
-    <p> <%= skill.name %> </p>
-  <% end %>
-<% else %>
-  <p> Edit your account to add a skill </p>
 <% end %>
 <h3>
   Uploaded Projects
+  
+  <%# Only display create button if the user is on their own page %>
   <% if user_signed_in? && (@user.id == current_user.id)%>
     <%= link_to 'Create New Project', projects_new_path, class: "btn btn-primary btn-sm" %>
   <% end %>

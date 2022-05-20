@@ -1,4 +1,5 @@
 <h1> <%= @project.name %> </h1>
+<%# Display button based on if the current user is aprat of the project already %>
 <% if user_signed_in? && (@project.user.id != current_user.id) && current_user.developer? && (@project.status != true) %>
   <% if (@project.joined?(current_user, @project)) %>
     <%= button_to 'Leave Project', leave_project_path, method: 'patch', class: 'btn btn-outline-warning me-2' %>

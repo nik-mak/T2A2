@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :developer_projects, source: :project, through: :user_projects, dependent: :destroy
   has_many :requester_projects, class_name: 'Project', foreign_key: 'user_id', dependent: :destroy
 
-  # 
+  # Images
   has_one_attached :profile_img
 
   # Validations

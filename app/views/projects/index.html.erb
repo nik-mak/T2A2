@@ -1,10 +1,12 @@
 <h1>
   Projects
+  <%# Only display button if a user is logged in %>
   <% if user_signed_in? %>
     <%= link_to 'New Project', projects_new_path, class: "btn btn-primary btn-sm" %>
   <% end %>
 </h1>
 <div class="row">
+  <%# Display 'in development' projects %>
   <div class="col-sm">
     <h3>New/In development</h3>
     <% @projects.order('created_at DESC').each do |project| %>
@@ -13,6 +15,7 @@
       <% end %>
     <% end %>
   </div>
+  <%# Display completed projects %>
   <div class="col-sm">
     <h3>Completed</h3>
     <% @projects.order('created_at DESC').each do |project| %>
