@@ -4,8 +4,21 @@
     <%= link_to 'New Project', projects_new_path, class: "btn btn-primary btn-sm" %>
   <% end %>
 </h1>
-<% @projects.order('created_at DESC').each do |project| %>
-  <% if project.status != true %>
-    <p> <%= link_to project.name, project_path(project.id) %> </p>
-  <% end %>
-<% end %>
+<div class="row">
+  <div class="col-sm">
+    <h3>New/In development</h3>
+    <% @projects.order('created_at DESC').each do |project| %>
+      <% if project.status != true %>
+        <p> <%= link_to project.name, project_path(project.id) %> </p>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-sm">
+    <h3>Completed</h3>
+    <% @projects.order('created_at DESC').each do |project| %>
+      <% if project.status == true %>
+        <p> <%= link_to project.name, project_path(project.id) %> </p>
+      <% end %>
+    <% end %>
+  </div>
+</div>

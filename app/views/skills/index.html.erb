@@ -1,5 +1,8 @@
 <h1>Skills</h1>
-
-<% @skills.each do |skill| %>
-  <p> <%= link_to skill.name, skill_path(skill.id) %> </p>
-<% end %>
+<div class="row">
+  <% @skills.each do |skill| %>
+    <div class="col-sm-3">
+      <p> <%= link_to skill.name, skill_path(skill.id) %> </p>
+    </div>
+  <% end %>
+</div>
