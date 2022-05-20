@@ -59,7 +59,7 @@ https://trello.com/b/Bzz6qfvz/t2a2-marketplace-project
 
 ![User Page](docs/Users%20Page.png)
 
-![Developer Page](docs/Developers%20Page.png)
+![Developer Page](docs/Developers%20Page.png
 
 ![Projects Page](docs/Projects%20Page.png)
 
@@ -119,7 +119,7 @@ All the profile images on the site are handled through the Active record tables 
 See R14
 
 ## R20 - Describe the way tasks are allocated and tracked in your project
-Task for this project are tracked using Trello.
+Task for this project are tracked using Trello. User stories were created at the start of development with more being added as the complexity of the app increased.
 
 https://trello.com/b/Bzz6qfvz/t2a2-marketplace-project
 
