@@ -29,10 +29,15 @@ This web app is designed to connect people with developers, to work together on 
 
 - Sitemap
 
-![Sitemap](../docs/sitemap.png)
+![Sitemap](docs/sitemap.png)
 
 - Screenshots
-
+![Homepage](docs/homepage-ss.png)
+![Profile](docs/profile-ss.png)
+![Developers](docs/devs-ss.png)
+![Projects](docs/projects-ss.png)
+![Project](docs/project-ss.png)
+![Skills](docs/skills-ss.png)
 
 - Target audience
   - Developers of all skill levels
@@ -50,17 +55,17 @@ User stories for the application can be found on the Trello Board:
 https://trello.com/b/Bzz6qfvz/t2a2-marketplace-project
 
 ## R13 - Wireframes for your app
-![Homepage](../docs/Homepage.png)
+![Homepage](docs/Homepage.png)
 
-![User Page](../docs/Users%20Page.png)
+![User Page](docs/Users%20Page.png)
 
-![Developers](../docs/Developers%20Page.png)
+![Developer Page](docs/Developers%20Page.png)
 
-![Projects Page](../docs/Projects%20Page.png)
+![Projects Page](docs/Projects%20Page.png)
 
-![Project Page](../docs/Project%20Page.png)
+![Project Page](docs/Project%20Page.png)
 ## R14 - An ERD for your app
-![ERD](../docs/erd.jpg)
+![ERD](docs/erd.jpg)
 
 ## R15 - Explain the different high-level components (abstractions) in your app
 Tables
