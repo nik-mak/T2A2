@@ -27,4 +27,5 @@ Rails.application.routes.draw do
   get 'skills/new', to: 'skills#new'
   get 'skills/:id', to: 'skills#show', as: 'skill'
   post 'skills', to: 'skills#create'
+  delete 'skills/:id', to: 'skills#destroy'
 end
