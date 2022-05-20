@@ -38,6 +38,7 @@ This web app is designed to connect people with developers, to work together on 
 ![Projects](docs/projects-ss.png)
 ![Project](docs/project-ss.png)
 ![Skills](docs/skills-ss.png)
+![Skill](docs/skill-ss.png)
 
 - Target audience
   - Developers of all skill levels

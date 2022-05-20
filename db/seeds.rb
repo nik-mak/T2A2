@@ -20,6 +20,9 @@ f = User.create!(first_name: 'Cecil', last_name: 'Smith', email: 'six@test.com',
 g = User.create!(first_name: 'Miles', last_name: 'Tone', email: 'seven@test.com', password: 'test123', description: 'Test Seven', developer: false)
 h = User.create!(first_name: 'Linguina', last_name: 'Nettlewater', email: 'eight@test.com', password: 'test123', description: 'Test Eight', developer: false)
 
+# Admin user
+a.add_role :admin
+
 # Skills
 Skill.create!(name: 'C')
 Skill.create!(name: 'Python')
