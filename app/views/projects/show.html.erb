@@ -16,9 +16,11 @@
   <p>In Development</p>
 <% end %>
 <h3> Requested by: </h3>
+<%= cl_image_tag(@project.user.profile_img.key, :height=>100, :width=>150, :crop=>"limit", cloud_name: ENV['CLOUDINARY_CLOUD_NAME']) if @project.user.profile_img.attached? %>
 <p> <%= link_to @project.user.full_name, user_path(@project.user_id) %> </p>
 <h3> Developers:  </h3>
 <% @project.users.each do |dev|%>
+  <%= cl_image_tag(dev.profile_img.key, :height=>100, :width=>150, :crop=>"limit", cloud_name: ENV['CLOUDINARY_CLOUD_NAME']) if dev.profile_img.attached? %>
   <p> <%= link_to dev.full_name, user_path(dev.id) %> </p>
 <% end %>
 <% if user_signed_in? && (@project.user.id == current_user.id)%>
