@@ -2,10 +2,14 @@
 <%# Only display users that have identified themselves as developers %>
 <div class="row">
   <% @users.each do |user| %>
-    <div class="col-sm-3">
+    <div class="col-sm-3 mt-5">
       <% if user.developer? %>
-        <%= cl_image_tag(user.profile_img.key, :height=>100, :width=>150, :crop=>"limit", cloud_name: ENV['CLOUDINARY_CLOUD_NAME']) %>
-        <p> <%= link_to user.full_name, user_path(user.id) %> </p>
+        <div class="border border-3 rounded-3 pt-3">
+          <div class="mx-auto" style="width: 200px;">
+            <%= cl_image_tag(user.profile_img.key, :height=>100, :width=>150, :crop=>"limit", cloud_name: ENV['CLOUDINARY_CLOUD_NAME']) %>
+            <p> <%= link_to user.full_name, user_path(user.id) %> </p>
+          </div>
+        </div>
       <% end %>
     </div>
   <% end %>
