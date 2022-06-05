@@ -1,8 +1,12 @@
 <h1>Developers</h1>
 <%# Only display users that have identified themselves as developers %>
-<% @users.each do |user| %>
-  <% if user.developer? %>
-    <%= cl_image_tag(user.profile_img.key, :height=>100, :width=>150, :crop=>"limit", cloud_name: ENV['CLOUDINARY_CLOUD_NAME']) %>
-    <p> <%= link_to user.full_name, user_path(user.id) %> </p>
+<div class="row">
+  <% @users.each do |user| %>
+    <div class="col-sm-3">
+      <% if user.developer? %>
+        <%= cl_image_tag(user.profile_img.key, :height=>100, :width=>150, :crop=>"limit", cloud_name: ENV['CLOUDINARY_CLOUD_NAME']) %>
+        <p> <%= link_to user.full_name, user_path(user.id) %> </p>
+      <% end %>
+    </div>
   <% end %>
-<% end %>
+</div>
