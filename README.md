@@ -9,7 +9,7 @@ People can often find it tiresome or intimidating to find established developers
 This barrier has also prevented new and upcoming developers from learning about the processes involved in creating such programs. While traditional education can teach someone how to write a method or function, it is often the case that most new developers don't get exposed to the developmental process involved until they get a job in the field.
 
 ## R9 - A link (URL) to your deployed app (i.e. website)
-https://intense-ravine-98420.herokuapp.com/
+https://nerdbucket.herokuapp.com/
 
 ## R10 - A link to your GitHub repository (repo).
 https://github.com/nik-mak/t2a2
